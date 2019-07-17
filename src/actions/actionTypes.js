@@ -1,0 +1,26 @@
+export const USER_ACTION = {
+  CREATE: "USER_CREATE",
+  REMOVE: "USER_REMOVE",
+  UPDATE: "USER_UPDATE",
+  VERIFY: "USER_VERIFY"
+};
+
+export const ERROR_ACTION = {
+  ADD: "ERROR_ADD",
+  REMOVE: "ERROR_REMOVE"
+};
+
+export const AUTH_ACTION = {
+  LOGIN: "AUTH_LOGIN",
+  LOGOUT: "AUTH_LOGOUT"
+};
+
+export const NOTIFY_ACTION = {
+  ADD: "NOTIFY_ADD",
+  REMOVE: "NOTIFY_REMOVE"
+};
+
+export const FETCH_ACTION = {
+  ALL: "FETCH_ALL",
+  REMOVE: "FETCH_REMOVE"
+};
