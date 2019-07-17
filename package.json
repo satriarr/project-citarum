@@ -2,7 +2,7 @@
   "name": "citarum-river",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://satriarr.github.io/ctr",
+  "homepage": "https://satriarr.github.io/project-citarum",
   "dependencies": {
     "antares-http": "^1.0.4",
     "axios": "^0.19.0",
