@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/project-citarum/static/css/main.b9e55eb1.chunk.css",
+    "main.js": "/project-citarum/static/js/main.3d00d182.chunk.js",
+    "main.js.map": "/project-citarum/static/js/main.3d00d182.chunk.js.map",
+    "runtime~main.js": "/project-citarum/static/js/runtime~main.3f1b6642.js",
+    "runtime~main.js.map": "/project-citarum/static/js/runtime~main.3f1b6642.js.map",
+    "static/js/2.8db65166.chunk.js": "/project-citarum/static/js/2.8db65166.chunk.js",
+    "static/js/2.8db65166.chunk.js.map": "/project-citarum/static/js/2.8db65166.chunk.js.map",
+    "index.html": "/project-citarum/index.html",
+    "precache-manifest.dfa47e3057d4e1adbb85f010ee8292f2.js": "/project-citarum/precache-manifest.dfa47e3057d4e1adbb85f010ee8292f2.js",
+    "service-worker.js": "/project-citarum/service-worker.js",
+    "static/css/main.b9e55eb1.chunk.css.map": "/project-citarum/static/css/main.b9e55eb1.chunk.css.map",
+    "static/media/loginRegister.scss": "/project-citarum/static/media/bandung.11b9f965.jpg",
+    "static/media/profile.jpg": "/project-citarum/static/media/profile.87d71dde.jpg"
+  }
+}
