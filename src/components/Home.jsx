@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
-import Notification from "./Notification";
 
 import { notifyRemove } from "../actions";
 
@@ -38,11 +37,8 @@ class Home extends React.Component {
             <div className="col-md-3">
               <Sidebar />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-9">
               <Main />
-            </div>
-            <div className="col-md-3">
-              <Notification />
             </div>
           </div>
         </div>

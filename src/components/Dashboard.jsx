@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Line, Doughnut } from "react-chartjs-2";
 import myserver from "../apis/myserver";
+import moment from "moment";
 // import antares from "antares-http";
 
 class Dashboard extends React.Component {
@@ -9,11 +10,12 @@ class Dashboard extends React.Component {
     lat: null,
     long: null,
     errLoc: false,
-    data: [0, 0, 0, 0, 0]
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    time: new Date()
   };
 
   componentDidMount() {
-    myserver.get("/antares/getparticular").then(val => {
+    myserver.get("/antares/getparticular?limit=15").then(val => {
       const rdata = val.data.map(d => {
         return parseFloat(d.val.split(",")[0]);
       });
@@ -21,6 +23,11 @@ class Dashboard extends React.Component {
         data: [...rdata]
       });
     });
+    this.timerID = setInterval(() => {
+      this.setState({
+        time: new Date()
+      });
+    }, 1000);
     this.RTE = setInterval(() => {
       myserver.get("/antares/getlatest").then(val => {
         const dt = parseFloat(val.data.val.split(",")[0]);
@@ -47,6 +54,10 @@ class Dashboard extends React.Component {
         }
       );
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval([this.timerID, this.RTE]);
   }
 
   getLatitude() {
@@ -87,8 +98,25 @@ class Dashboard extends React.Component {
 
   render() {
     const { firstname, lastname, admin } = this.props.user;
+    console.log(this.state.data);
     const data = {
-      labels: ["1H", "2H", "3H", "4H", "5H"],
+      labels: [
+        "5s",
+        "10s",
+        "15s",
+        "20s",
+        "25s",
+        "30s",
+        "35s",
+        "40s",
+        "45s",
+        "50s",
+        "55s",
+        "60s",
+        "65s",
+        "70s",
+        "75s"
+      ],
       datasets: [
         {
           label: "Today",
@@ -98,9 +126,29 @@ class Dashboard extends React.Component {
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
             "rgba(153, 102, 255, 0.2)"
           ],
           borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
@@ -135,6 +183,22 @@ class Dashboard extends React.Component {
           <h4>Selamat datang kembali</h4>
         </div>
         <div className="location">
+          <ul className="location__list-menu">
+            <li className="list-menu__item">
+              <div className="item__text">
+                <h5>{moment().format("dddd")}</h5>
+                <span>Hari</span>
+              </div>
+            </li>
+            <li className="list-menu__item">
+              <div className="item__text">
+                <h5>{this.state.time.toLocaleTimeString()}</h5>
+                <span>Jam</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="location">
           <h4>Info Lokasi</h4>
           <ul className="location__list-menu">
             <li className="list-menu__item">
@@ -156,6 +220,28 @@ class Dashboard extends React.Component {
               </div>
             </li>
           </ul>
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-8">
+              <iframe
+                title="citarum"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.0759470004054!2d107.63296482919216!3d-6.973440668500981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTgnMjQuNCJTIDEwN8KwMzgnMDAuNiJF!5e0!3m2!1sid!2sid!4v1563423931302!5m2!1sid!2sid"
+                frameborder="0"
+                style={{
+                  border: "0",
+                  width: "100%",
+                  height: "300px",
+                  borderRadius: "5px"
+                }}
+                allowfullscreen
+              />
+            </div>
+            <div className="col-md-4">
+              <h5>Lokasi Microcontroller</h5>
+              <address>
+                Jl. Telekomunikasi, Sukapura, Dayeuhkolot, Bandung, West Java
+              </address>
+            </div>
+          </div>
         </div>
         <div className="river-chart">
           <h4 className="mb-4">Sungai Citarum</h4>
@@ -233,9 +319,7 @@ class Dashboard extends React.Component {
               aria-labelledby="pills-contact-tab"
             >
               <div className="row mt-5">
-                <div className="col-md-8">
-                  <Doughnut data={doughnutData} />
-                </div>
+                <div className="col-md-8" />
                 <div className="col-md-4">
                   <div className="card mb-3 bg-primary text-white">
                     <div className="card-body">
