@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Line, Doughnut } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import myserver from "../apis/myserver";
 import moment from "moment";
 // import antares from "antares-http";
@@ -159,19 +159,6 @@ class Dashboard extends React.Component {
         }
       ]
     };
-    const doughnutData = {
-      datasets: [
-        {
-          data: [10, 20, 30],
-          backgroundColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 205, 86, 1)",
-            "rgba(54, 162, 235, 1)"
-          ]
-        }
-      ],
-      labels: ["Red", "Yellow", "Blue"]
-    };
     return (
       <div className="main animated zoomIn faster">
         <div className="main__text-header">
@@ -194,6 +181,31 @@ class Dashboard extends React.Component {
               <div className="item__text">
                 <h5>{this.state.time.toLocaleTimeString()}</h5>
                 <span>Jam</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="location">
+          <ul className="location__list-menu">
+            <li className="list-menu__item">
+              <div className="item__text text-center">
+                <i className="fas list-menu__icon fa-water" />
+                <h5>7.8</h5>
+                <span>Ketinggian air</span>
+              </div>
+            </li>
+            <li className="list-menu__item">
+              <div className="item__text text-center">
+                <i className="fas list-menu__icon fa-tint" />
+                <h5>5.6</h5>
+                <span>Massa air</span>
+              </div>
+            </li>
+            <li className="list-menu__item">
+              <div className="item__text text-center">
+                <i className="fas list-menu__icon fa-temperature-low" />
+                <h5>8.9</h5>
+                <span>Kadar Ph</span>
               </div>
             </li>
           </ul>
@@ -270,19 +282,6 @@ class Dashboard extends React.Component {
                 aria-selected="false"
               >
                 History
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="pills-contact-tab"
-                data-toggle="pill"
-                href="#pills-contact"
-                role="tab"
-                aria-controls="pills-contact"
-                aria-selected="false"
-              >
-                Summary
               </a>
             </li>
           </ul>
