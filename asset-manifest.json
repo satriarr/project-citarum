@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/project-citarum/static/css/main.b9e55eb1.chunk.css",
-    "main.js": "/project-citarum/static/js/main.2214df38.chunk.js",
-    "main.js.map": "/project-citarum/static/js/main.2214df38.chunk.js.map",
+    "main.css": "/project-citarum/static/css/main.4add7b03.chunk.css",
+    "main.js": "/project-citarum/static/js/main.f914905d.chunk.js",
+    "main.js.map": "/project-citarum/static/js/main.f914905d.chunk.js.map",
     "runtime~main.js": "/project-citarum/static/js/runtime~main.3f1b6642.js",
     "runtime~main.js.map": "/project-citarum/static/js/runtime~main.3f1b6642.js.map",
     "static/js/2.ad5e72ca.chunk.js": "/project-citarum/static/js/2.ad5e72ca.chunk.js",
     "static/js/2.ad5e72ca.chunk.js.map": "/project-citarum/static/js/2.ad5e72ca.chunk.js.map",
     "index.html": "/project-citarum/index.html",
-    "precache-manifest.e0f87646916daefa7cb1d1bc246ddcc9.js": "/project-citarum/precache-manifest.e0f87646916daefa7cb1d1bc246ddcc9.js",
+    "precache-manifest.f912f2086c1d8df6a181defdfc180c1d.js": "/project-citarum/precache-manifest.f912f2086c1d8df6a181defdfc180c1d.js",
     "service-worker.js": "/project-citarum/service-worker.js",
-    "static/css/main.b9e55eb1.chunk.css.map": "/project-citarum/static/css/main.b9e55eb1.chunk.css.map",
+    "static/css/main.4add7b03.chunk.css.map": "/project-citarum/static/css/main.4add7b03.chunk.css.map",
     "static/media/loginRegister.scss": "/project-citarum/static/media/bandung.11b9f965.jpg",
     "static/media/profile.jpg": "/project-citarum/static/media/profile.87d71dde.jpg"
   }

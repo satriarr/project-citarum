@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2ccd751ec7c9c93c01c28bc49511027b",
+    "revision": "a1d1754542a09020008e455172b9c4f4",
     "url": "/project-citarum/index.html"
   },
   {
-    "revision": "c5e6c9628b336c42e96b",
-    "url": "/project-citarum/static/css/main.b9e55eb1.chunk.css"
+    "revision": "09431b16af82b5fed9c4",
+    "url": "/project-citarum/static/css/main.4add7b03.chunk.css"
   },
   {
     "revision": "77e505fb40344f6d04e3",
     "url": "/project-citarum/static/js/2.ad5e72ca.chunk.js"
   },
   {
-    "revision": "c5e6c9628b336c42e96b",
-    "url": "/project-citarum/static/js/main.2214df38.chunk.js"
+    "revision": "09431b16af82b5fed9c4",
+    "url": "/project-citarum/static/js/main.f914905d.chunk.js"
   },
   {
     "revision": "f979ee2b87d8ad2a5073",
