@@ -191,21 +191,21 @@ class Dashboard extends React.Component {
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-water" />
                 <h5>7.8</h5>
-                <span>Ketinggian air</span>
+                <span>Turbidity</span>
               </div>
             </li>
             <li className="list-menu__item">
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-tint" />
                 <h5>5.6</h5>
-                <span>Massa air</span>
+                <span>pH</span>
               </div>
             </li>
             <li className="list-menu__item">
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-temperature-low" />
                 <h5>8.9</h5>
-                <span>Kadar Ph</span>
+                <span>Suhu</span>
               </div>
             </li>
           </ul>
