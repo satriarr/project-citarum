@@ -10,7 +10,9 @@ class Dashboard extends React.Component {
     lat: null,
     long: null,
     errLoc: false,
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    dataTurbidity: [0, 0, 0, 0, 0],
+    dataPh: [0, 0, 0, 0, 0],
+    dataSuhu: [0, 0, 0, 0, 0],
     time: new Date(),
     turbidity: null,
     ph: null,
@@ -18,12 +20,20 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount() {
-    myserver.get("/antares/getparticular?limit=15").then(val => {
-      const rdata = val.data.map(d => {
+    myserver.get("/antares/getparticular?limit=5").then(val => {
+      const turbData = val.data.map(d => {
+        return parseFloat(d.val.split(",")[1]);
+      });
+      const phData = val.data.map(d => {
         return parseFloat(d.val.split(",")[0]);
       });
+      const suhuData = val.data.map(d => {
+        return parseFloat(d.val.split(",")[2]);
+      });
       this.setState({
-        data: [...rdata]
+        dataTurbidity: [...turbData],
+        dataPh: [...phData],
+        dataSuhu: [...suhuData]
       });
     });
     this.timerID = setInterval(() => {
@@ -33,17 +43,32 @@ class Dashboard extends React.Component {
     }, 1000);
     this.RTE = setInterval(() => {
       myserver.get("/antares/getlatest").then(val => {
-        const dt = parseFloat(val.data.val.split(",")[0]);
+        const dt = parseFloat(val.data.val.split(",")[1]);
+        const dp = parseFloat(val.data.val.split(",")[0]);
+        const ds = parseFloat(val.data.val.split(",")[2]);
+        myserver.post("/antares/", {
+          turbidity: dt,
+          ph: dp,
+          suhu: ds
+        });
         this.setState({
-          turbidity: parseFloat(val.data.val.split(",")[0]),
-          ph: parseFloat(val.data.val.split(",")[1]),
+          turbidity: parseFloat(val.data.val.split(",")[1]),
+          ph: parseFloat(val.data.val.split(",")[0]),
           suhu: parseFloat(val.data.val.split(",")[2])
         });
-        const lastArray = this.state.data;
-        lastArray.pop();
-        lastArray.unshift(dt);
+        const dtLastArray = this.state.dataTurbidity;
+        dtLastArray.pop();
+        dtLastArray.unshift(dt);
+        const dpLastArray = this.state.dataPh;
+        dpLastArray.pop();
+        dpLastArray.unshift(dp);
+        const dsLastArray = this.state.dataSuhu;
+        dsLastArray.pop();
+        dsLastArray.unshift(ds);
         this.setState({
-          data: [...lastArray]
+          dataTurbidity: [...dtLastArray],
+          dataPh: [...dpLastArray],
+          dataSuhu: [...dsLastArray]
         });
       });
     }, 5000);
@@ -106,40 +131,14 @@ class Dashboard extends React.Component {
 
   render() {
     const { firstname, lastname, admin } = this.props.user;
-    console.log(this.state.data);
-    const data = {
-      labels: [
-        "5s",
-        "10s",
-        "15s",
-        "20s",
-        "25s",
-        "30s",
-        "35s",
-        "40s",
-        "45s",
-        "50s",
-        "55s",
-        "60s",
-        "65s",
-        "70s",
-        "75s"
-      ],
+    console.log(this.state.dataPh);
+    const dataTurbidity = {
+      labels: ["5s", "10s", "15s", "20s", "25s"],
       datasets: [
         {
-          label: "Today",
-          data: this.state.data,
+          label: "Turbidity",
+          data: this.state.dataTurbidity,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
@@ -151,12 +150,50 @@ class Dashboard extends React.Component {
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    };
+    const dataPh = {
+      labels: ["5s", "10s", "15s", "20s", "25s"],
+      datasets: [
+        {
+          label: "pH",
+          data: this.state.dataPh,
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)"
+          ],
+          borderColor: [
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    };
+    const dataSuhu = {
+      labels: ["5s", "10s", "15s", "20s", "25s"],
+      datasets: [
+        {
+          label: "Suhu",
+          data: this.state.dataSuhu,
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)"
+          ],
+          borderColor: [
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
             "rgba(255, 99, 132, 1)",
@@ -324,7 +361,19 @@ class Dashboard extends React.Component {
               role="tabpanel"
               aria-labelledby="pills-home-tab"
             >
-              <Line data={data} />
+              <div className="row">
+                <div className="col-md-12">
+                  <Line data={dataTurbidity} />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <Line data={dataPh} />
+                </div>
+                <div className="col-md-6">
+                  <Line data={dataSuhu} />
+                </div>
+              </div>
             </div>
             <div
               className="tab-pane fade"
@@ -335,11 +384,11 @@ class Dashboard extends React.Component {
               <div className="row mt-5">
                 <div className="col-md-6">
                   <h4 className="text-center">Past Week</h4>
-                  <Line data={data} />
+                  <Line data={dataTurbidity} />
                 </div>
                 <div className="col-md-6">
                   <h4 className="text-center">Past Month</h4>
-                  <Line data={data} />
+                  <Line data={dataTurbidity} />
                 </div>
               </div>
             </div>
