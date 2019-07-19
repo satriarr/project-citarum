@@ -11,7 +11,10 @@ class Dashboard extends React.Component {
     long: null,
     errLoc: false,
     data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    time: new Date()
+    time: new Date(),
+    turbidity: null,
+    ph: null,
+    suhu: null
   };
 
   componentDidMount() {
@@ -31,6 +34,11 @@ class Dashboard extends React.Component {
     this.RTE = setInterval(() => {
       myserver.get("/antares/getlatest").then(val => {
         const dt = parseFloat(val.data.val.split(",")[0]);
+        this.setState({
+          turbidity: parseFloat(val.data.val.split(",")[0]),
+          ph: parseFloat(val.data.val.split(",")[1]),
+          suhu: parseFloat(val.data.val.split(",")[2])
+        });
         const lastArray = this.state.data;
         lastArray.pop();
         lastArray.unshift(dt);
@@ -190,21 +198,45 @@ class Dashboard extends React.Component {
             <li className="list-menu__item">
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-water" />
-                <h5>7.8</h5>
+                {this.state.turbidity ? (
+                  <h5>{this.state.turbidity}</h5>
+                ) : (
+                  <div className="text-center mb-3">
+                    <div className="spinner-border" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                )}
                 <span>Turbidity</span>
               </div>
             </li>
             <li className="list-menu__item">
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-tint" />
-                <h5>5.6</h5>
+                {this.state.ph ? (
+                  <h5>{this.state.ph}</h5>
+                ) : (
+                  <div className="text-center mb-3">
+                    <div className="spinner-border" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                )}
                 <span>pH</span>
               </div>
             </li>
             <li className="list-menu__item">
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-temperature-low" />
-                <h5>8.9</h5>
+                {this.state.suhu ? (
+                  <h5>{this.state.suhu}</h5>
+                ) : (
+                  <div className="text-center mb-3">
+                    <div className="spinner-border" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                )}
                 <span>Suhu</span>
               </div>
             </li>
