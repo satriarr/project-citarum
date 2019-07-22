@@ -47,11 +47,16 @@ class Dashboard extends React.Component {
         const dt = parseFloat(val.data.val.split(",")[1]);
         const dp = parseFloat(val.data.val.split(",")[0]);
         const ds = parseFloat(val.data.val.split(",")[2]);
-        myserver.post("/antares/", {
-          turbidity: dt,
-          ph: dp,
-          suhu: ds
-        });
+        if (this.state.taken) {
+          if (!(val.data.date === this.state.taken)) {
+            myserver.post("/antares/", {
+              turbidity: dt,
+              ph: dp,
+              suhu: ds
+            });
+            console.log("direkam");
+          }
+        }
         this.setState({
           turbidity: parseFloat(val.data.val.split(",")[1]),
           ph: parseFloat(val.data.val.split(",")[0]),
