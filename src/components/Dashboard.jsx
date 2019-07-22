@@ -16,7 +16,8 @@ class Dashboard extends React.Component {
     time: new Date(),
     turbidity: null,
     ph: null,
-    suhu: null
+    suhu: null,
+    taken: null
   };
 
   componentDidMount() {
@@ -54,7 +55,8 @@ class Dashboard extends React.Component {
         this.setState({
           turbidity: parseFloat(val.data.val.split(",")[1]),
           ph: parseFloat(val.data.val.split(",")[0]),
-          suhu: parseFloat(val.data.val.split(",")[2])
+          suhu: parseFloat(val.data.val.split(",")[2]),
+          taken: val.data.date
         });
         const dtLastArray = this.state.dataTurbidity;
         dtLastArray.pop();
@@ -131,7 +133,6 @@ class Dashboard extends React.Component {
 
   render() {
     const { firstname, lastname, admin } = this.props.user;
-    console.log(this.state.dataPh);
     const dataTurbidity = {
       labels: ["5s", "10s", "15s", "20s", "25s"],
       datasets: [
@@ -231,6 +232,7 @@ class Dashboard extends React.Component {
           </ul>
         </div>
         <div className="location">
+          <h4>Data terakhir: {this.state.taken}</h4>
           <ul className="location__list-menu">
             <li className="list-menu__item">
               <div className="item__text text-center">
