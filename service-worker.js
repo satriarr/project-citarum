@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/project-citarum/precache-manifest.5d2b87a1aa96557288d132b327db7ad5.js"
+  "/project-citarum/precache-manifest.b99556dfb47914086043796690c758b9.js"
 );
 
 self.addEventListener('message', (event) => {
