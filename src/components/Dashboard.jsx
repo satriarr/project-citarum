@@ -389,13 +389,46 @@ class Dashboard extends React.Component {
               aria-labelledby="pills-profile-tab"
             >
               <div className="row mt-5">
+                <div className="col-md-12">
+                  <iframe
+                    title="Turbidity history"
+                    style={{
+                      border: "none",
+                      borderRadius: "2px",
+                      boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)"
+                    }}
+                    width="100%"
+                    height="480"
+                    src="https://charts.mongodb.com/charts-project-0-ancdr/embed/charts?id=73e423f4-766b-4e3b-9ddc-0ac7dcbe0341&tenant=495c6e62-49e2-47c7-a358-e219fee9b427"
+                  />
+                </div>
+              </div>
+              <div className="row mt-4">
                 <div className="col-md-6">
-                  <h4 className="text-center">Past Week</h4>
-                  <Line data={dataTurbidity} />
+                  <iframe
+                    title="Suhu history"
+                    style={{
+                      border: "none",
+                      borderRadius: "2px",
+                      boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)"
+                    }}
+                    width="100%"
+                    height="480"
+                    src="https://charts.mongodb.com/charts-project-0-ancdr/embed/charts?id=fbcf3393-098e-4900-8c67-347dfca50b8d&tenant=495c6e62-49e2-47c7-a358-e219fee9b427"
+                  />
                 </div>
                 <div className="col-md-6">
-                  <h4 className="text-center">Past Month</h4>
-                  <Line data={dataTurbidity} />
+                  <iframe
+                    title="pH history"
+                    style={{
+                      border: "none",
+                      borderRadius: "2px",
+                      boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)"
+                    }}
+                    width="100%"
+                    height="480"
+                    src="https://charts.mongodb.com/charts-project-0-ancdr/embed/charts?id=ecdbefab-c2d6-44a8-ac56-5e954b0b8d81&tenant=495c6e62-49e2-47c7-a358-e219fee9b427"
+                  />
                 </div>
               </div>
             </div>
