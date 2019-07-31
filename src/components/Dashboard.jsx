@@ -312,7 +312,7 @@ class Dashboard extends React.Component {
             <div className="col-md-8">
               <iframe
                 title="citarum"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.0759470004054!2d107.63296482919216!3d-6.973440668500981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTgnMjQuNCJTIDEwN8KwMzgnMDAuNiJF!5e0!3m2!1sid!2sid!4v1563423931302!5m2!1sid!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5151327415515!2d107.66948941456765!3d-6.94839769497994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c2a75bc7e2f3%3A0xd91e40072eba9c8c!2sBalai+Besar+Wilayah+Sungai+Citarum!5e0!3m2!1sid!2sid!4v1564534808677!5m2!1sid!2sid"
                 frameborder="0"
                 style={{
                   border: "0",
@@ -326,7 +326,8 @@ class Dashboard extends React.Component {
             <div className="col-md-4">
               <h5>Lokasi Microcontroller</h5>
               <address>
-                Jl. Telekomunikasi, Sukapura, Dayeuhkolot, Bandung, West Java
+                STA 5600, Jl. Inspeksi Cidurian Soekarno-Hatta ], Cipamokolan,
+                Kec. Rancasari, Kota Bandung, Jawa Barat 40292
               </address>
             </div>
           </div>
