@@ -239,7 +239,10 @@ class Dashboard extends React.Component {
         <div className="location">
           <h4>Data terakhir: {this.state.taken}</h4>
           <ul className="location__list-menu">
-            <li className="list-menu__item">
+            <li
+              className="list-menu__item"
+              style={{ backgroundColor: "#f24a4a", color: "white" }}
+            >
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-water" />
                 {this.state.turbidity ? (
@@ -254,7 +257,10 @@ class Dashboard extends React.Component {
                 <span>Turbidity</span>
               </div>
             </li>
-            <li className="list-menu__item">
+            <li
+              className="list-menu__item"
+              style={{ backgroundColor: "#f24a4a", color: "white" }}
+            >
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-tint" />
                 {this.state.ph ? (
@@ -269,7 +275,10 @@ class Dashboard extends React.Component {
                 <span>pH</span>
               </div>
             </li>
-            <li className="list-menu__item">
+            <li
+              className="list-menu__item"
+              style={{ backgroundColor: "#f24a4a", color: "white" }}
+            >
               <div className="item__text text-center">
                 <i className="fas list-menu__icon fa-temperature-low" />
                 {this.state.suhu ? (
